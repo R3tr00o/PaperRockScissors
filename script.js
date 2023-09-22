@@ -1,6 +1,8 @@
 "use strict";
 
-function getComputerChoice() {
+// Choosing functions
+
+const getComputerChoice = function () {
   const chosenNumber = Math.floor(Math.random() * 3);
   if (chosenNumber === 0) {
     return "Paper";
@@ -9,9 +11,9 @@ function getComputerChoice() {
   } else {
     return "Scissors";
   }
-}
+};
 
-function playerSelection(chosenItem) {
+const playerSelection = function (chosenItem) {
   const lowerCase = chosenItem.toLowerCase();
   const capitalizedStr = lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1);
 
@@ -26,6 +28,21 @@ function playerSelection(chosenItem) {
   } else {
     return alert("You enter nothing, please try again.");
   }
+};
+
+function playRound(playerSelection, computerSelection) {
+  let playerScore = 0;
+  let computerScore = 0;
+  if (playerSelection === computerSelection) {
+    console.log("Draw");
+  } else if (playerSelection === "Paper") {
+    if (computerSelection === "Rock") {
+      console.log("You lose Rock beats Paper");
+    }
+  }
 }
 
-console.log(playerSelection(prompt("Choose: Paper, Rock or Scissors")));
+playRound(
+  playerSelection(prompt("Pick your weapon: Rock, Paper, Scissors", "")),
+  getComputerChoice()
+);
