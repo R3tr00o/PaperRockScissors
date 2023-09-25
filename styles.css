@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  text-align: center;
+  padding-top: 200px;
+  background-image: linear-gradient(rgb(47, 219, 119), rgb(44, 223, 113));
+}

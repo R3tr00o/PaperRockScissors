@@ -31,18 +31,55 @@ const playerSelection = function (chosenItem) {
 };
 
 function playRound(playerSelection, computerSelection) {
-  let playerScore = 0;
+  let playerScore = 1;
   let computerScore = 0;
   if (playerSelection === computerSelection) {
     console.log("Draw");
   } else if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
-      console.log("You lose Rock beats Paper");
+      console.log("You win, Paper beats Rock!");
+      return playerScore;
+    } else {
+      console.log("You lose, Scissors cuts Paper.");
+      return computerScore;
+    }
+  } else if (playerSelection === "Rock") {
+    if (computerSelection === "Scissors") {
+      console.log("You win, Rock beats Scissors!");
+      return playerScore;
+    } else {
+      console.log("You lose, Paper beats Rock.");
+      return computerScore;
+    }
+  } else if (playerSelection === "Scissors") {
+    if (computerSelection === "Paper") {
+      console.log("You win, Scissors cuts Paper!");
+      return playerScore;
+    } else {
+      console.log("You lose, Rock beats Scissors.");
+      return computerScore;
     }
   }
 }
 
-playRound(
-  playerSelection(prompt("Pick your weapon: Rock, Paper, Scissors", "")),
-  getComputerChoice()
-);
+function game() {
+  let computerScore = 0;
+  let playerScore = 0;
+
+  for (let i = 0; i < 5; i++) {
+    let round = playRound(
+      playerSelection(prompt("Pick your weapon: Rock, Paper, Scissors", "")),
+      getComputerChoice()
+    );
+
+    if (round === 1) {
+      playerScore++;
+    } else if (round === 0) {
+      computerScore++;
+    } else {
+    }
+    console.log(`You ${playerScore} : Computer ${computerScore}`);
+  }
+}
+
+game();
